@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="site.css">
+</head>
+<body>
+    <div :style="[baseStyle, darkModeSet ? darkMode : '']">
+        <app-header></app-header>
+        <main>
+            <div class="blog-wrapper">
+                <!-- v-on shorthand is @ -->
+                <button @click="toggleDarkMode">
+                    {{ darkModeSet ? '&#9788;' : '&#9789;'}}
+                </button>
+                <!-- BLOG SECTION -->
+                <section id="blog">
+                    <!-- Creates a blog post component for each post in the posts array -->
+                    <blog-post v-for="post in posts" :post="post"></blog-post>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Import of Vue must happen before any Vue code can execute -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="index.mjs" type="module"></script>
+</body>
+</html>
