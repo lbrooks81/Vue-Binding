@@ -57,7 +57,11 @@ app.component('app-header', {
     data(){
         return{
             name: "Logan Brooks",
-            links: ["home", "portfolio", "contact me"],
+            links: [
+                {name: "home", url: "#"},
+                {name: "portfolio", url: "/portfolio.html"},
+                {name: "contact me", url: "/contact.html"}
+            ]
         }
     },
     template: `<header>
@@ -66,7 +70,8 @@ app.component('app-header', {
                         <ul>
                             <!-- v-for just acts as a foreach loop -->
                             <li v-for="link in links">
-                                <a href="#" v-text="link"></a>
+                                <script> console.log(links)</script>
+                                <a :href="link.url" v-text="link.name"></a>
                             </li>
                         </ul>
                     </nav>
